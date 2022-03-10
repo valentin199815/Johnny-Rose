@@ -63,7 +63,7 @@ body main {
 }
 
 body main > section {
-  width: 80%;
+  padding: 0 5%;
   margin: 50px 0;
 }
 
@@ -77,16 +77,8 @@ body main > section h2 {
 body main > section.bio {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 15px;
-}
-
-@media (max-width: 400px) {
-  body main > section.bio {
-    -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
+  -ms-grid-columns: (minmax(500px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 }
 
 body main > section.bio img {
@@ -204,13 +196,14 @@ body main > section.events > div > div img {
 
 body main > section.events > div > div > div {
   width: 100%;
-  background-color: #ca2b2b;
+  background-color: black;
   border-radius: 0px 0px 10px 10px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 30% 70%;
       grid-template-columns: 30% 70%;
   text-align: center;
+  padding: 3%;
 }
 
 body main > section.events > div > div > div .date {
@@ -234,16 +227,11 @@ body main > section.events > div > div > div > div {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 body main > section.events > div > div > div > div p:first-child {
   color: white;
+  margin-bottom: 4%;
 }
 
 body main > section.events > div > div > div > div p:first-child i {
@@ -312,11 +300,12 @@ body footer {
 body footer p:first-child {
   font-size: 30px;
   color: white;
-  padding-top: 2%;
+  padding: 2% 0;
 }
 
 body footer p:nth-child(2) {
   color: white;
+  padding: 0 0 2%;
 }
 
 body footer .icons i {

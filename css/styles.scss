@@ -62,7 +62,7 @@ body{
         margin-top: 50px;
         @include flex($direct:column);
         &>section{
-            width: 80%;
+            padding: 0 5%;
             margin: 50px 0;
             h2{
                 color: black;
@@ -71,7 +71,9 @@ body{
                 margin: 20px;
             }
             &.bio{
-               @include grid;
+               display: grid;
+               grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+               
                 img{
                     width: 100%;
                 }
@@ -130,11 +132,12 @@ body{
                         }
                         &>div{
                             width: 100%;
-                            background-color: $mycolor;
+                            background-color: black;
                             border-radius: 0px 0px 10px 10px;
                             display: grid;
                             grid-template-columns: 30% 70%;
                             text-align: center;
+                            padding: 3%;
                             .date{
                                 font-size: 20px;
                                 font-weight: bold;
@@ -147,9 +150,11 @@ body{
                             }
                             &>div{
                                 width: 100%;
-                                @include flex($direct:column);
+                                display: flex;
+                                flex-direction: column;
                                 p:first-child{
                                     color: white;
+                                    margin-bottom: 4%;
                                     i{
                                         padding-right: 20px;
                                     }
@@ -206,10 +211,11 @@ body{
         p:first-child{
             font-size: 30px;
             color: white;
-            padding-top: 2%;
+            padding: 2% 0;
         }
         p:nth-child(2){
             color: white;
+            padding: 0 0 2%;
         }
         .icons{
             i{
