@@ -1,256 +1,222 @@
-//added reset css  Yuya
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-//-e added reset css
 
-body{
-    margin: 0;
-    font-family: "Montserrat";
-}
 $mycolor : rgb(202, 43, 43);
-
-// I add this for .photos    Yuya
 @mixin flex($direct:row,$justify:center,$align:center){
     display: flex;
     flex-direction: $direct;
     justify-content: $justify;
     align-items: $align;
 }
-//-e I add this for .photos
 
-header{
-    background-image: url("../img/1.jpeg");
-    //to adjast position
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-position: 50% 0; 
-    //-e to adjast position
-
-    h1{
-        margin: 0;
-        padding: 6% 0 2%;
-        font-size: 60px;
-        text-align: center;
-        span{
-            color: $mycolor;
-        }
+@mixin grid(){
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+    @media (max-width:400px) {
+        grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
     }
-    nav{
-        top: 50px;
-        text-align: center;
-        a{
-            text-decoration: none;
-            font-size: 25px;
-            color: black;
-            padding: 1%;
-            &:hover{
+    grid-gap: 15px;
+}
+
+body{
+    margin: 0;
+    font-family: "Montserrat";
+
+    header{
+        background-image: url("../img/1.jpeg");
+        //to adjast position
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 0; 
+        //-e to adjast position
+        h1{
+            margin: 0;
+            padding: 6% 0 2%;
+            font-size: 60px;
+            text-align: center;
+            span{
                 color: $mycolor;
             }
         }
-    }
-}
-main{
-    @include flex($direct:column);
-    .bio{
-        width: 90%;
-        margin: 5% 0;
-        padding: 3%;
-        display: grid;
-        //change minmax to 250px  because the smallest devise is 280  Yuya
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        //there was some bugs 
-        img{
-            width: 100%;
+        nav{
+            top: 50px;
+            text-align: center;
+            a{
+                text-decoration: none;
+                font-size: 25px;
+                color: black;
+                padding: 1%;
+                &:hover{
+                    color: $mycolor;
+                }
+            }
         }
-        div{
+    }
+
+
+    main{
+        margin-top: 50px;
+        @include flex($direct:column);
+        &>section{
+            width: 80%;
+            margin: 50px 0;
             h2{
+                color: black;
                 text-align: center;
                 font-size: 40px;
-                color: $mycolor;
                 margin: 20px;
             }
-            p{
-                margin: 5%;
-            }
-            div{
-                text-align: center;
-                button{
-                    background-color: $mycolor;
-                    padding: 16px 20px;
-                    border: 0; outline: 0;
-                    color: white;
-                    cursor: pointer;
-                    border-radius: 4px;
-                }
-            }
-        }
-        
-    }
-
-    //I used flex instead of grid  Yuya
-    .photos{
-        width: 90%;
-        margin: 7% auto;
-        @include flex($direct:column);
-        h2{
-            text-align: center;
-            font-size: 40px;
-            color: black;
-            margin: 20px;
-        }
-        &>div{
-            @include flex;
-            flex-wrap: wrap;
-            &>div{
-                width: 50%;
-                min-width: 250px;
-                max-width: 400px;
-                border: 10px solid black;
-                background-color: black;
-                overflow: hidden;
-                margin: 10px;
-                @include flex;
+            &.bio{
+               @include grid;
                 img{
                     width: 100%;
-                    opacity: 0;
-                    transform: scale(1,0);
-                    transition: 0.7s all;
-                    &.show_img{
-                        opacity: 1;
-                        transform: scale(1,1);
-                    }
-                    &:hover{
-                        transform: scale(1.1,1.1);
-                    }
                 }
-            }
-        }
-    }
-    //-e I used flex instead of grid
-
-    .events{
-        padding: 4%;
-        width: 100%;
-        h2{
-            text-align: center;
-            font-size: 40px;
-            color: $mycolor;
-            margin: 20px;
-        }
-        div{
-            display: grid;
-            //change minmax to 250px  because the smallest devise is 280  Yuya
-            grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
-            //there was some bugs 
-            column-gap: 5%;
-            div{
-                display: flex;
-                flex-direction: column;
-                margin-bottom: 5%;
-                img{
-                    width: 100%;
-                    border-radius: 10px 10px 0px 0px;
-                }
-                div{
-                    background-color: $mycolor;
-                    border-radius: 0px 0px 10px 10px;
-                    display: grid;
-                    grid-template-columns: 30% 70%;
-                    column-gap: 0%;
-                    text-align: center;
-                    .date{
-                        font-size: 20px;
-                        font-weight: bold;
-                        border-right: 1px solid white;
-                        color: white;
+                &>div{
+                    p{
+                        margin: 5%;
+                    }
+                    &>div{
                         text-align: center;
-                        span{
-                            font-size: 33px;
+                        button{
+                            background-color: $mycolor;
+                            padding: 16px 20px;
+                            border: 0; outline: 0;
+                            color: white;
+                            cursor: pointer;
+                            border-radius: 4px;
                         }
                     }
-                    div{
-                        width: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        p:first-child{
-                            color: white;
-                            i{
-                                padding-right: 20px;
+                }        
+            }
+
+            &.photos{
+                &>div{
+                    @include grid;
+                    grid-auto-rows: auto;
+                    &>div{
+                        border: 10px solid black;
+                        background-color: black;
+                        overflow: hidden;
+                        @include flex;
+                        img{
+                            width: 100%;
+                            opacity: 0;
+                            transform: scale(1,0);
+                            transition: 0.7s all;
+                            &.show_img{
+                                opacity: 1;
+                                transform: scale(1,1);
+                            }
+                            &:hover{
+                                transform: scale(1.1,1.1);
                             }
                         }
-                        p:nth-child(2){
-                            font-size: 12px;
-                            color: white;
+                    }
+                }
+            }
+
+            &.events{
+                &>div{
+                    @include grid;
+                    &>div{
+                        @include flex($direct:column);
+                        img{
+                            width: 100%;
+                            border-radius: 10px 10px 0px 0px;
+                        }
+                        &>div{
+                            width: 100%;
+                            background-color: $mycolor;
+                            border-radius: 0px 0px 10px 10px;
+                            display: grid;
+                            grid-template-columns: 30% 70%;
+                            text-align: center;
+                            .date{
+                                font-size: 20px;
+                                font-weight: bold;
+                                border-right: 1px solid white;
+                                color: white;
+                                text-align: center;
+                                span{
+                                    font-size: 33px;
+                                }
+                            }
+                            &>div{
+                                width: 100%;
+                                @include flex($direct:column);
+                                p:first-child{
+                                    color: white;
+                                    i{
+                                        padding-right: 20px;
+                                    }
+                                }
+                                p:nth-child(2){
+                                    font-size: 12px;
+                                    color: white;
+                                }
+                            }
                         }
                     }
-                    
+                }
+            }
+            &.contact{
+                @include grid;
+                img{
+                    width: 100%;
+                }
+                form{
+                    input, textarea{
+                        width: 100%;
+                        max-height: 70px;
+                        min-width: 100%;
+                        max-width: 100%;
+                        padding: 7px;
+                        border-radius: 10px;
+                        margin-bottom: 3%;
+                    }
+                    label{
+                        color: $mycolor;
+                        font-size: 20px;
+                    }
+                    div{
+                        text-align: center;
+                        button{
+                            background-color: $mycolor;
+                            padding: 16px 20px;
+                            border: 0; outline: 0;
+                            color: white;
+                            cursor: pointer;
+                            border-radius: 4px;
+                        }
+                    }
                 }
             }
         }
     }
-    .contact{
-        width: 90%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-        margin: 5% 0;
-        img{
-            width: 100%;
-        }
-        form{
-            padding: 2% 5%;
-            h2{
-                text-align: center;
-                color: $mycolor;
-                font-size: 40px;
-            }
-            input, textarea{
-                width: 100%;
-                max-height: 70px;
-                min-width: 100%;
-                max-width: 100%;
-                padding: 7px;
-                border-radius: 10px;
-                margin-bottom: 3%;
-            }
-            label{
-                color: $mycolor;
-                font-size: 20px;
-            }
-            div{
-                text-align: center;
-                button{
-                    background-color: $mycolor;
-                    padding: 16px 20px;
-                    border: 0; outline: 0;
-                    color: white;
-                    cursor: pointer;
-                    border-radius: 4px;
-                }
-            }
-        }
-    }
-}
-footer{
-    height: 30vh;
-    background-color: $mycolor;
-    text-align: center;
-    p:first-child{
-        font-size: 30px;
-        color: white;
-        padding-top: 2%;
-    }
-    p:nth-child(2){
-        color: white;
-    }
-    .icons{
-        i{
+
+
+    footer{
+        height: 30vh;
+        background-color: $mycolor;
+        text-align: center;
+        p:first-child{
+            font-size: 30px;
             color: white;
-            font-size: 24px;
-            padding: 0 10px;
+            padding-top: 2%;
+        }
+        p:nth-child(2){
+            color: white;
+        }
+        .icons{
+            i{
+                color: white;
+                font-size: 24px;
+                padding: 0 10px;
+            }
         }
     }
-    
 }
