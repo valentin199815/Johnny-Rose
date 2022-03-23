@@ -1,0 +1,151 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+}
+
+body .top_nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  place-items: center;
+  padding: 1rem 2rem;
+  background-color: #f0efef;
+  -webkit-box-shadow: 1px 1px 5px rgba(124, 124, 124, 0.692);
+          box-shadow: 1px 1px 5px rgba(124, 124, 124, 0.692);
+}
+
+body .top_nav .title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+body .top_nav .title span {
+  color: red;
+}
+
+body .top_nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+body .top_nav a:hover {
+  color: blue;
+}
+
+body .main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+body .main .left_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  width: 220px;
+  border-right: 3px solid rgba(194, 194, 194, 0.336);
+  background-color: rgba(247, 176, 176, 0.411);
+}
+
+body .main .left_menu a {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  padding: 1.5rem 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-bottom: 2px solid rgba(194, 194, 194, 0.336);
+}
+
+body .main .left_menu a:hover {
+  background-color: red;
+  color: white;
+}
+
+body .main .right {
+  padding: 2rem;
+  width: 500px;
+}
+
+body.event div.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+body.event table,
+body.event tr,
+body.event th,
+body.event td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+}
+
+body.event table {
+  width: 800px;
+}
+
+body.event th {
+  background-color: rgba(255, 0, 0, 0.205);
+}
+
+body.event form {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 800px;
+  padding: 1rem 2rem;
+}
+
+body.event form h1 {
+  font-size: 1.8rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+}
+
+body.event form label {
+  display: inline-block;
+  width: 100px;
+}
+
+body.event form input {
+  margin-bottom: 1rem;
+  height: 1.7rem;
+  width: 200px;
+}
+
+body.event form button {
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+  border: none;
+  background-color: rgba(255, 0, 0, 0.144);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+body.event form button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.28);
+}
+/*# sourceMappingURL=indexStyle.css.map */

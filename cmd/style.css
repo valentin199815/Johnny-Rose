@@ -1,0 +1,112 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #e4e0e0;
+}
+
+.loginform {
+  border: 2px solid red;
+  border-radius: 10px;
+  padding: 3rem;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.loginform p {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: red;
+}
+
+.loginform .inputRow {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  place-items: center;
+}
+
+.loginform .inputRow input {
+  height: 2rem;
+  min-width: 240px;
+  padding-left: 0.5rem;
+}
+
+.loginform .inputRow label {
+  margin-right: 1rem;
+  text-align: center;
+}
+
+.loginform .inputRow .passwordLine {
+  position: relative;
+}
+
+.loginform .inputRow .passwordLine .fas {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  color: rgba(0, 0, 0, 0.637);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.loginform .inputRow .passwordLine .fas:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.loginform .remember {
+  margin: 1.5rem 0 2rem 0;
+  font-weight: 500;
+}
+
+.loginform .remember input {
+  margin-right: 1rem;
+}
+
+.loginform .btnRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.loginform .btnRow button {
+  padding: 1rem 1.5rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: #f15e5e;
+  color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  font-weight: 600;
+}
+
+.loginform .btnRow button:hover {
+  cursor: pointer;
+  background-color: transparent;
+  color: red;
+  border: 1px solid red;
+}
+/*# sourceMappingURL=style.css.map */

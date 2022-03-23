@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+
+  .top_nav {
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+    padding: 1rem 2rem;
+    background-color: rgb(240, 239, 239);
+    box-shadow: 1px 1px 5px rgba(124, 124, 124, 0.692);
+    .title {
+      font-size: 2rem;
+      font-weight: 600;
+      span {
+        color: red;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+      &:hover {
+        color: blue;
+      }
+    }
+  }
+
+  .main {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    .left_menu {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 220px;
+      border-right: 3px solid rgba(194, 194, 194, 0.336);
+      background-color: rgba(247, 176, 176, 0.411);
+      a {
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem;
+        padding: 1.5rem 0;
+        transition: 0.4s;
+        border-bottom: 2px solid rgba(194, 194, 194, 0.336);
+        &:hover {
+          background-color: red;
+          color: white;
+        }
+      }
+    }
+    .right {
+      padding: 2rem;
+      width: 500px;
+    }
+  }
+}
+
+//pages style
+body.event {
+  div.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  table,
+  tr,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+  }
+  table{
+      width: 800px;
+  }
+  th{
+      background-color: rgba(255, 0, 0, 0.205);
+  }
+
+  form{
+      border: 1px solid gray;
+      border-radius: 10px;
+      width: 800px;
+      padding: 1rem 2rem;
+      h1{
+          font-size: 1.8rem;
+          padding-top: 0.5rem;
+          padding-bottom: 1.5rem;
+      }
+      label{
+          display: inline-block;
+          width: 100px;
+      }
+      input{
+          margin-bottom: 1rem;
+          height: 1.7rem;
+          width: 200px;
+      }
+      button{
+          padding: 0.8rem 2rem;
+          border-radius: 10px;
+          margin: 0.5rem 0;
+          border: none;
+          background-color: rgba(255, 0, 0, 0.144);
+          transition: 0.3s;
+          &:hover{
+              cursor: pointer;
+              background-color: rgba(255, 0, 0, 0.28);
+
+          }
+      }
+  }
+}
