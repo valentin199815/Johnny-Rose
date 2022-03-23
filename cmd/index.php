@@ -29,7 +29,7 @@ if (isset($_GET['signout'])) {
 
 <body>
     <div class="top_nav">
-        <div class="title">Johnny and the <span>Rose</span></div>
+        <div class="index_title">Johnny and the <span>Rose</span></div>
         <a class="link" href="<?php echo $_SERVER['PHP_SELF'] . '?signout=1' ?>">Sign out</a>
     </div>
 

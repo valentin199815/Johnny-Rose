@@ -5,9 +5,13 @@
   margin: 0;
 }
 
+html {
+  height: 100vh;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 body .top_nav {
@@ -24,12 +28,12 @@ body .top_nav {
           box-shadow: 1px 1px 5px rgba(124, 124, 124, 0.692);
 }
 
-body .top_nav .title {
+body .top_nav .index_title {
   font-size: 2rem;
   font-weight: 600;
 }
 
-body .top_nav .title span {
+body .top_nav .index_title span {
   color: red;
 }
 
@@ -47,8 +51,7 @@ body .main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 body .main .left_menu {
@@ -59,7 +62,7 @@ body .main .left_menu {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
   width: 220px;
   border-right: 3px solid rgba(194, 194, 194, 0.336);
   background-color: rgba(247, 176, 176, 0.411);
@@ -83,7 +86,10 @@ body .main .left_menu a:hover {
 
 body .main .right {
   padding: 2rem;
-  width: 500px;
+}
+
+body.event {
+  min-height: 100vh;
 }
 
 body.event div.title {
@@ -98,7 +104,7 @@ body.event td {
   border: 1px solid black;
   border-collapse: collapse;
   text-align: center;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem;
   margin: 1rem 0;
 }
 
@@ -110,11 +116,38 @@ body.event th {
   background-color: rgba(255, 0, 0, 0.205);
 }
 
+body.event #newEvent {
+  padding: 0.5rem 1rem;
+}
+
+body.event #newEvent:hover {
+  cursor: pointer;
+}
+
+body.event a#btn {
+  margin-left: 3rem;
+  position: relative;
+  bottom: 0.5rem;
+  background-color: #e7e7e7;
+  text-decoration: none;
+  font-size: 13px;
+  color: black;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.274);
+  border-radius: 5px;
+}
+
+body.event a#btn:hover {
+  cursor: pointer;
+  background-color: #dad8d8;
+}
+
 body.event form {
   border: 1px solid gray;
   border-radius: 10px;
   width: 800px;
   padding: 1rem 2rem;
+  margin-top: 1rem;
 }
 
 body.event form h1 {
@@ -135,17 +168,18 @@ body.event form input {
 }
 
 body.event form button {
-  padding: 0.8rem 2rem;
-  border-radius: 10px;
-  margin: 0.5rem 0;
-  border: none;
-  background-color: rgba(255, 0, 0, 0.144);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  margin-bottom: 0.5rem;
+  background-color: #e7e7e7;
+  text-decoration: none;
+  font-size: 13px;
+  color: black;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.274);
+  border-radius: 5px;
 }
 
 body.event form button:hover {
   cursor: pointer;
-  background-color: rgba(255, 0, 0, 0.28);
+  background-color: #dad8d8;
 }
 /*# sourceMappingURL=indexStyle.css.map */
