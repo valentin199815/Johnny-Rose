@@ -1,4 +1,5 @@
 <?php
+include "./pages/config.php";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -46,13 +47,9 @@ session_start();
     </script>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $servername = 'localhost';
-        $username = 'root';
-        $password = '';
-        $database = 'johnnyandrose';
         $loginuser = $_POST['user_email'];
         $loginpassword = $_POST['password'];
-        $dbcon = new mysqli($servername, $username, $password, $database);
+        $dbcon = con_db();
         if ($dbcon->connect_error) {
             die("Connection Error: " . $dbcon->connect_errno);
         }

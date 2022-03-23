@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "./pages/config.php";
 //default page
 if (!isset($_SESSION['userid'])) {
     header("Location: ./login.php");

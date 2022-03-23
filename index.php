@@ -1,3 +1,6 @@
+<?php
+    include "./cmd/pages/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,10 +38,19 @@
                 <img src="./img/9.jpeg">
                 <div>
                     <h2>Who are we?</h2>
-                    <p>Johnny and The Rose have been performing together for over 40 years in various bands.</p> 
-                    <p>Their family band,The Molnars, were awarded BCCMA’S “Group of the Year” in 2001.</p>
-                    <p>Their Original music has also been used in the film industry.</p>
-                    <p>This husband and wife duo play a mix of Country, Pop, Rock, Blues and Originals</p>
+                    <?php
+                        $dbcon = con_db();
+                        if($dbcon->connect_error){
+                            die("Connection:failed");
+                        }
+                        $select="SELECT * FROM bio_table WHERE 1";
+                        $result=$dbcon->query($select);
+                        if($result->num_rows>0){
+                            while($row=$result->fetch_array()){
+                                echo "<p>".$row["para_1"]."</p><p>".$row["para_2"]."</p><p>".$row["para_3"]."</p><p>".$row["para_4"]."</p>";
+                            }
+                        }
+                    ?>
                     <div><button type="button">See Events</button></div>
                 </div>
             </section>
@@ -46,39 +58,21 @@
                 <h2>Gallery</h2>
                 <div>
                     <!--modified-->
-                    <div class="photos_img">
-                        <img src="./img/1.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/2.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/3.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/4.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/5.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/6.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/7.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/8.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/9.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/10.jpeg">
-                    </div>
-                    <div  class="photos_img">
-                        <img src="./img/11.jpeg">
-                    </div>
+                    <?php
+                        $dbcon = con_db();
+                        if($dbcon->connect_error){
+                            die("Connection:failed");
+                        }
+                        $select="SELECT * FROM gallery_table WHERE 1";
+                        $result=$dbcon->query($select);
+                        if($result->num_rows>0){
+                            while($row=$result->fetch_array()){
+                                echo "<div class='photos_img'>
+                                    <img src='".substr($row["picture_path"],1)."'>
+                                </div>";
+                            }
+                        }
+                    ?>
                     <!--e modified-->
                 </div>
             </section>
