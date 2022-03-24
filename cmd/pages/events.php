@@ -1,133 +1,122 @@
-<?php
-//connect database
-$servername = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'johnnyandrose';
-$dbcon = new mysqli($servername, $username, $password, $database);
-if ($dbcon->connect_error) {
-    die("Connection Error: " . $dbcon->connect_errno);
-}
-
-//add new event
-$button = "<a id='btn' href='" . $_SERVER['PHP_SELF'] . "?addr=events&new=event'> Add new event </a>";
-$disp2 = 'none';
-if (isset($_GET['new'])) {
-    $disp2 = 'block';
-}
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['new'])) {
-
-    $insert_cmd = "INSERT INTO `events_table`(`event_picture`, `event_date`, `event_location`, `event_description`) VALUES ('" . $_POST['event_picture'] . "','". $_POST['event_date'] ."','" . $_POST['event_location'] . "','" . $_POST['event_description'] . "')";
-    $result = $dbcon->query($insert_cmd);
-    if ($result === false) {
-        echo "<script>alert('Error happened');</script>";
-    } else {
-        echo "<script>alert('Saved');</script>";
-    }
-}
-
-
-//edit events
-$disp = 'none';
-$sql_cmd = "SELECT * FROM `events_table` ";
-$result = $dbcon->query($sql_cmd);
-$trtd = '';
-while ($row = $result->fetch_assoc()) {
-    $trtd .= "<tr><td>" . $row['event_id'] . "</td><td>" . $row['event_picture'] . "</td><td>" . $row['event_date'] . "</td><td>" . $row['event_location'] . "</td><td>" . $row['event_description'] . "</td><td> <a href='" . $_SERVER['PHP_SELF'] . "?addr=events&event_id=" . $row['event_id'] . "'>Edit</a></td><td><a href='" . $_SERVER['PHP_SELF'] . "?addr=events&eventid=" . $row['event_id']."'>x</a></td></tr>";
-}
-if (isset($_GET['eventid'])){
-    $del_cmd = "DELETE FROM events_table WHERE event_id = ".$_GET['eventid']." ";
-    $result = $dbcon->query($del_cmd);
-    if ($result === false) {
-        echo "<script>alert('Error happened');</script>";
-    } else {
-        echo "<script>alert('Deleted');</script>";
-    }
-}
-$info = array('event_id' => '', 'event_picture' => '', 'event_date' => '', 'event_location' => '', 'event_description' => '');
-if (isset($_GET['event_id'])) {
-    $disp = 'block';
-    $sql_cmd = "SELECT * FROM events_table WHERE event_id=" . $_GET['event_id'] . "";
-    $result = $dbcon->query($sql_cmd);
-    $row = $result->fetch_assoc();
-    $info['event_id'] = $row['event_id'];
-    $info['event_picture'] = $row['event_picture'];
-    $info['event_date'] = $row['event_date'];
-    $info['event_location'] = $row['event_location'];
-    $info['event_description'] = $row['event_description'];
-}
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_GET['new'])) {
-    $sql_cmd = "UPDATE events_table 
-        SET event_id='" . $_POST['event_id'] . "',
-        event_picture='" . $_POST['event_picture'] . "',
-        event_date='" . $_POST['event_date'] . "',
-        event_location='" . $_POST['event_location'] . "',
-        event_description='" . $_POST['event_description'] . "'
-        WHERE event_id=" . $_POST['event_id'] . " ";
-    $result = $dbcon->query($sql_cmd);
-    if ($result === false) {
-        echo "<script>alert('Error happened');</script>";
-    } else {
-        echo "<script>alert('Edited');</script>";
-    }
-    $dbcon->close();
-}
-?>
+<?php session_start() ?>
+<?php include('./config.php') ?>
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>Events page</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="./styles.css">
+       
+    </head>
+    <body>
+        <h2>ADD NEW EVENT</h2>
+        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']?>" enctype="multipart/form-data">
+            <label>Date</label>
+            <input type="text" name="date" placeholder="Example: SEP 2020">
+            <label>Location</label>
+            <input type="text" name="location" placeholder="Example: Burnaby, BC">
+            <label>Short Description</label>
+            <input type="text" name="short_description">
+            <label>Picture</label>
+            <input type="file" name="myfile">
+            <button id="mybtn" type="submit">Upload Event</button>
+        </form>
+        <?php
+            if($_SERVER['REQUEST_METHOD'] == "POST"){
+                $date = $_POST['date'];
+                $location = $_POST['location'];
+                $description = $_POST['short_description'];
+                $file = "./evenimg/".$_FILES['myfile']['name'];
+                $picture_tmp = $_FILES['myfile']['tmp_name'];
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../indexStyle.css?<?php echo time(); ?>" />
-    <title></title>
-</head>
+                $targetdir = './evenimg/'.basename($_FILES['myfile']['name']);
+                $imgdetails = getimagesize($_FILES['myfile']['tmp_name']);
 
-<body class="event">
-    <!-------------------- events list --------------------->
-    <div class="title">Events List <?php echo $button ?></div>
-    
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Picture</th>
-            <th>Date</th>
-            <th>Location</th>
-            <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        <?php echo $trtd ?>
-    </table>
+                $connectdb = con_db();
+                $eventsquey = "INSERT INTO `events_table`(`event_picture`, `event_date`, `event_location`, 
+                `event_description`, `event_picture_tmp`) VALUES ('$file','$date','$location','$description','$picture_tmp')";
+                    if($connectdb->query($eventsquey) === TRUE){
+                        pic_upload($_FILES['myfile']['tmp_name'], $targetdir);
 
-    <!-------------------- new event --------------------->
-    
+                        echo "<p id='success'>Event upload succesfully</p>";
+                    }else{
+                        echo "There was an error, please try again later";
+                    }
+                $connectdb->close();
 
-    <form action="<?php echo $_SERVER['PHP_SELF'] . '?addr=events&new=event' ?>" method="POST" style="display: <?php echo $disp2 ?>;">
-        <h1>ADD NEW EVENT</h1>
+            }
+        ?>
+        <div>
+            <h2>CURRENT EVENTS</h2>
+            <table class="table">
+                <thead>
+                    <th scope="col">Picture</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </thead>
+            <?php 
+                $connectdb = con_db();
+                $selectdb = "SELECT * FROM `events_table`";
+                $result = $connectdb->query($selectdb);
+                    if($result->num_rows>0){
+                        while($row = $result->fetch_assoc()){
+                            echo "<tr><td><img width='50px' height='50px' src='". $row["event_picture"]."'></td>";
+                            echo "<td><p>". $row['event_date']."</p></td>";
+                            echo "<td><p>". $row['event_location']."</p></td>";
+                            echo "<td><p>". $row['event_description']."</p></td>";
+                            $eventid = $row['event_id'];
+                            echo "<td><a type='button' href='updateevent.php?updateeventid=".$eventid."'>Update</a></td>";
+                            echo "<td><a type='button' href='delete.php?deleteeventid=".$eventid."'>Delete</a></td>";
+                            
+                        }
+                    }
+                $connectdb->close();
+            ?>
+            </table>
+            <?php
+                if(isset($_SESSION['message'])){
+                    echo "<p id='success'>". $_SESSION['message']."</p>";
+                    session_unset();
+                    session_destroy();
+                }
+                if(isset($_SESSION['messagedeleted'])){
+                    echo $_SESSION['messagedeleted'];
+                    session_unset();
+                    session_destroy();
+                }
+            ?>
+            
+        </div>
         
-        <label>Picture</label> <input type="text" name="event_picture"><br>
-        <label>Date</label> <input type="date" name="event_date"><br>
-        <label>Location</label> <input type="text" name="event_location"><br>
-        <label>Description</label> <input type="text" name="event_description"><br>
-
-        <button type="submit">Register</button>
-    </form>
-
-    <!-------------------- edit form --------------------->
-    <form action="<?php echo $_SERVER['PHP_SELF'] . '?addr=events' ?>" method="POST" style="display: <?php echo $disp ?>;">
-        <h1>EDIT EVENTS</h1>
-        <input type="hidden" name="event_id" value="<?= $_GET['event_id'] ?>">
-
-        <label>Picture</label> <input type="text" name="event_picture" value="<?= $info['event_picture'] ?>"><br>
-        <label>Date</label> <input type="date" name="event_date" value="<?= $info['event_date'] ?>"><br>
-        <label>Location</label> <input type="text" name="event_location" value="<?= $info['event_location'] ?>"><br>
-        <label>Description</label> <input type="text" name="event_description" value="<?= $info['event_description'] ?>"><br>
-
-        <button type="submit">Register</button>
-
-    </form>
-</body>
+    </body>
 
 </html>
+<script>
+    var inputs = document.getElementsByTagName("input");
+    var button = document.getElementById("mybtn");
+    function disabled (disabled,bgcolor,cursor,border){
+        button.disabled=disabled;
+        button.style.backgroundColor = bgcolor;
+        button.style.cursor = cursor;
+        button.style.border = border;
+    }
+    window.addEventListener("load", function(){
+        disabled(true,"gray","default","none");
+    });
+    
+    for(var i=0;i<inputs.length;i++){
+        inputs[i].addEventListener("change", function(event){
+        if(inputs[0].value == "" || inputs[1].value == ""|| inputs[2].value == "" || inputs[3].value == ""){
+            disabled(true,"gray","default","none");
+        }else{
+            disabled(false,"green","pointer","1px solid black");
+        }
+    })
+    };
+    
+
+</script>
+

@@ -79,117 +79,26 @@
             <section class="events" id="events">
                 <h2>Events</h2>
                 <div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">FEB <span>2018</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>Murrayville, BC</p>
-                                <p>Some text</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">JUN <span>2019</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>Fort Langley, BC</p>
-                                <p>Community Days</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">JUL <span>2019</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>Abbotsford, BC</p>
-                                <p>M2W2</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">AUG <span>2019</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>Port Kells, BC</p>
-                                <p>Same Sun Summer Jam</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">AUG <span>2019</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>Langley, BC</p>
-                                <p>Ribfest</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">DEC <span>2019</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>Abbotsford, BC</p>
-                                <p>M2W2</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">SEP <span>2020</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>OK Falls, BC</p>
-                                <p>Sun & Sand Resort</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">OCT <span>2020</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>OK Falls, BC</p>
-                                <p>Sun & Sand Resort</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">JUL <span>2021</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>OK Falls, BC</p>
-                                <p>Sun & Sand Resort</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./img/1.jpeg">
-                        <div>
-                            <p class="date">AUG <span>2021</span></p>
-                            <div>
-                                <p><i style="font-size:24px" class="fas">&#xf3c5;</i>OK Falls, BC</p>
-                                <p>Sun & Sand Resort</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
+                    <?php
+                        $dbconnect = con_db();
+                        $selectdb = "SELECT * FROM `events_table`";
+                        $result = $connectdb->query($selectdb);
+                            if($result-> num_rows >0){
+                                while($row = $result->fetch_assoc()){
+                                    echo "<div>";
+                                        echo "<img src='". $row["event_picture"]."'>";
+                                        echo "<div>";
+                                            echo "<p class='date'>". $row['event_date']."</p>";
+                                            echo "<div>";
+                                                echo "<p><i style='font-size:24px' class='fas'>&#xf3c5;</i>".$row['event_location']."</p>";
+                                                echo "<p>". $row['event_description']."</p>";
+                                            echo "</div>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                }
+                            }
+                            $dbconnect->close();
+                    ?>                    
                 </div>
             </section>
             <section class="contact" id="contact">
