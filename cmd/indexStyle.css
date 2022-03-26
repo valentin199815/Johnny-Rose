@@ -291,98 +291,96 @@ body .main .right .photo > form > div:last-child button:last-child:hover {
   background-color: red;
 }
 
-body.event {
-  min-height: 100vh;
+body .main .right .users > form {
+  margin: 5% 0;
 }
 
-body.event div.title {
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-
-body.event table,
-body.event tr,
-body.event th,
-body.event td {
-  border: 1px solid black;
-  border-collapse: collapse;
+body .main .right .users > form h2 {
   text-align: center;
-  padding: 0.4rem 1rem;
-  margin: 1rem 0;
 }
 
-body.event table {
-  width: 800px;
+body .main .right .users > form label {
+  font-weight: bold;
 }
 
-body.event th {
-  background-color: rgba(255, 0, 0, 0.205);
+body .main .right .users > form input {
+  width: 100%;
+  padding: 7px;
+  margin-bottom: 30px;
+  border: 0;
+  border-bottom: 1px solid black;
 }
 
-body.event #newEvent {
-  padding: 0.5rem 1rem;
-}
-
-body.event #newEvent:hover {
-  cursor: pointer;
-}
-
-body.event a#btn {
-  margin-left: 3rem;
-  position: relative;
-  bottom: 0.5rem;
-  background-color: #e7e7e7;
-  text-decoration: none;
-  font-size: 13px;
-  color: black;
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.274);
-  border-radius: 5px;
-}
-
-body.event a#btn:hover {
-  cursor: pointer;
-  background-color: #dad8d8;
-}
-
-body.event form {
-  border: 1px solid gray;
+body .main .right .users > form button[type=submit] {
+  border: 0;
+  outline: 0;
+  background-color: green;
+  color: white;
   border-radius: 10px;
-  width: 800px;
-  padding: 1rem 2rem;
-  margin-top: 1rem;
-}
-
-body.event form h1 {
-  font-size: 1.8rem;
-  padding-top: 0.5rem;
-  padding-bottom: 1.5rem;
-}
-
-body.event form label {
-  display: inline-block;
-  width: 100px;
-}
-
-body.event form input {
-  margin-bottom: 1rem;
-  height: 1.7rem;
-  width: 200px;
-}
-
-body.event form button {
-  margin-bottom: 0.5rem;
-  background-color: #e7e7e7;
-  text-decoration: none;
-  font-size: 13px;
-  color: black;
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.274);
-  border-radius: 5px;
-}
-
-body.event form button:hover {
+  padding: 16px 20px;
   cursor: pointer;
-  background-color: #dad8d8;
+}
+
+body .main .right .users #succes {
+  text-align: center;
+  color: green;
+}
+
+body .main .right .users #wrong {
+  text-align: center;
+  color: red;
+}
+
+body .main .right .users > div table th {
+  border-bottom: 1px solid black;
+}
+
+body .main .right .users > div table td {
+  padding: 0 50px;
+}
+
+body .main .right .users > div table td #update {
+  color: orange;
+  text-decoration: none;
+}
+
+body .main .right .users > div table td #update:hover {
+  text-decoration: underline;
+}
+
+body .main .right .users > div table td #delete {
+  color: red;
+  text-decoration: none;
+}
+
+body .main .right .users > div table td #delete:hover {
+  text-decoration: underline;
+}
+
+body .main .right .update_user_info form input {
+  width: 100%;
+  padding: 7px;
+  margin-bottom: 30px;
+  border: 0;
+  border-bottom: 1px solid black;
+}
+
+body .main .right .update_user_info form label {
+  font-weight: bold;
+}
+
+body .main .right .update_user_info form button[type=submit] {
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+body .main .right .update_user_info p {
+  text-align: center;
+  color: red;
 }
 /*# sourceMappingURL=indexStyle.css.map */

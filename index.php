@@ -68,7 +68,7 @@
                         if($result->num_rows>0){
                             while($row=$result->fetch_array()){
                                 echo "<div class='photos_img'>
-                                    <img src='".substr($row["picture_path"],1)."'>
+                                    <img src='./cmd/".$row["picture_path"]."'>
                                 </div>";
                             }
                         }
@@ -82,11 +82,11 @@
                     <?php
                         $dbconnect = con_db();
                         $selectdb = "SELECT * FROM `events_table`";
-                        $result = $connectdb->query($selectdb);
+                        $result = $dbconnect->query($selectdb);
                             if($result-> num_rows >0){
                                 while($row = $result->fetch_assoc()){
                                     echo "<div>";
-                                        echo "<img src='". $row["event_picture"]."'>";
+                                        echo "<img src='./cmd/". $row["event_picture"]."'>";
                                         echo "<div>";
                                             echo "<p class='date'>". $row['event_date']."</p>";
                                             echo "<div>";

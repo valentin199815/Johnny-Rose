@@ -17,7 +17,7 @@
         for($i=0;$i<100;$i++){
             if(isset($_FILES["up_pic".$i]["name"])){
                 if(!empty($_FILES["up_pic".$i]["name"])){
-                    $dir="../img/".basename($_FILES["up_pic".$i]["name"]);
+                    $dir="./pages/gallery/".basename($_FILES["up_pic".$i]["name"]);
                     $extension=pathinfo($_FILES["up_pic".$i]["name"],PATHINFO_EXTENSION);
                     if($extension=="jpg" || $extension=="jpeg" || $extension=="png"){
                         pic_upload($_FILES["up_pic".$i]["tmp_name"],$dir);

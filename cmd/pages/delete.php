@@ -1,39 +1,31 @@
-<?php include('./config.php') ?>
-<!DOCTYPE html>
-<html>
-    <head>
+<?php
+    if(isset($_GET['deleteeventid'])){
+        $getuserid =$_GET['deleteeventid'] ;
+        $connectdb = con_db();
 
-    </head>
-    <body>
-          
-        <?php
-        if(isset($_GET['deleteeventid'])){
-            $getuserid =$_GET['deleteeventid'] ;
-            $connectdb = connect();
-            $detelequery = "DELETE FROM `events_table` WHERE event_id='$getuserid'";
-            if($connectdb->query($detelequery)===TRUE){
-                echo "Event deleted";
-            }else{
-                return false;
-            }
-            $connectdb->close();
-            $_SESSION['messagedeleted'] = "<p>Event deleted succesfully</p>";
-            header("Location:events.php");
+        $selectquery = "SELECT event_picture FROM `events_table` WHERE event_id='".$getuserid."'";
+        $result=$connectdb->query($selectquery);
+        if($result->num_rows>0){
+            while($row=$result->fetch_array()){
+                unlink($row["event_picture"]);
+            };
         }
-        else if(isset($_GET['deleteuserid'])){
-            $userid = $_GET['deleteuserid'];
-            $connectdb = connect();
-            $detelequery = "DELETE FROM `users_table` WHERE user_id='$userid'";
-                if($connectdb->query($detelequery) === TRUE){
-                    echo "<p>User deleted succesfully</p>";
-                    
-                }else{
-                    echo "<p>There was a problem, please try again later";
-                }
-                $connectdb->close();
-            header("Location:users.php");
-        }
-       
-        ?>
-    </body>
-</html>
+
+        $detelequery = "DELETE FROM `events_table` WHERE event_id='".$getuserid."'";
+        $connectdb->query($detelequery);
+        $connectdb->close();
+        $_SESSION['message'] = "<p>Event deleted succesfully</p>";
+        header("Location:".$_SERVER["PHP_SELF"]."?addr=events");
+        exit();
+    }
+    else if(isset($_GET['deleteuserid'])){
+        $userid = $_GET['deleteuserid'];
+        $connectdb = con_db();
+        $detelequery = "DELETE FROM `users_table` WHERE user_id='".$userid."'";  
+        $connectdb->query($detelequery);
+        $connectdb->close();
+        $_SESSION['message'] = "<p>User deleted succesfully</p>";
+        header("Location:".$_SERVER["PHP_SELF"]."?addr=users");
+        exit();
+    }
+?>
