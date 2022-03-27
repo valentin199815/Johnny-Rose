@@ -82,11 +82,12 @@
                     <?php
                         $dbconnect = con_db();
                         $selectdb = "SELECT * FROM `events_table`";
-                        $result = $connectdb->query($selectdb);
+                        $result = $dbconnect->query($selectdb);
                             if($result-> num_rows >0){
                                 while($row = $result->fetch_assoc()){
                                     echo "<div>";
-                                        echo "<img src='". $row["event_picture"]."'>";
+                                        echo "<img src='".substr($row["event_picture"],1).
+                                        "'>";
                                         echo "<div>";
                                             echo "<p class='date'>". $row['event_date']."</p>";
                                             echo "<div>";

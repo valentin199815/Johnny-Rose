@@ -1,14 +1,18 @@
 <?php
 session_start();
 include "./pages/config.php";
-//default page
+//default page => login page
 if (!isset($_SESSION['userid'])) {
     header("Location: ./login.php");
     exit();
 }
+
+//main default => bio page
 if (!isset($_GET['addr'])) {
-    $_GET['addr'] = 'admin_main';
+    $_GET['addr'] = 'bio';
 }
+
+//sign out => session destroy
 if (isset($_GET['signout'])) {
     session_unset();
     session_destroy();
@@ -16,6 +20,7 @@ if (isset($_GET['signout'])) {
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +40,8 @@ if (isset($_GET['signout'])) {
     </div>
 
     <div class="main">
+
+        <!-- side bar menu -->
         <div class="left_menu">
             <a href="<?php echo $_SERVER['PHP_SELF'] . '?addr=bio' ?>">
                 Bio info
@@ -50,6 +57,8 @@ if (isset($_GET['signout'])) {
                 Users
             </a>
         </div>
+
+        <!-- main page -->
         <div class="right">
             <?php
             if ($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'POST') {

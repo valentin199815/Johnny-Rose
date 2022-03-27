@@ -45,6 +45,7 @@ body .top_nav a {
 
 body .top_nav a:hover {
   color: blue;
+  cursor: pointer;
 }
 
 body .main {
@@ -82,6 +83,7 @@ body .main .left_menu a {
 body .main .left_menu a:hover {
   background-color: red;
   color: white;
+  cursor: pointer;
 }
 
 body .main .right {
@@ -179,6 +181,7 @@ body .main .right .bio > form > button {
 
 body .main .right .bio > form > button:hover {
   background-color: rgba(0, 0, 0, 0.61);
+  cursor: pointer;
 }
 
 body .main .right .photo {
@@ -281,6 +284,7 @@ body .main .right .photo > form > div:last-child button {
 
 body .main .right .photo > form > div:last-child button:hover {
   background-color: rgba(0, 0, 0, 0.61);
+  cursor: pointer;
 }
 
 body .main .right .photo > form > div:last-child button:last-child {
@@ -289,6 +293,7 @@ body .main .right .photo > form > div:last-child button:last-child {
 
 body .main .right .photo > form > div:last-child button:last-child:hover {
   background-color: red;
+  cursor: pointer;
 }
 
 body.event {

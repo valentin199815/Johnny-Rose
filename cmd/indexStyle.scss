@@ -39,6 +39,8 @@ body {
       font-weight: 600;
       &:hover {
         color: blue;
+        cursor: pointer;
+
       }
     }
   }
@@ -64,6 +66,8 @@ body {
         &:hover {
           background-color: red;
           color: white;
+          cursor: pointer;
+
         }
       }
     }
@@ -112,6 +116,8 @@ body {
                 padding: 5px 0;
                 &:hover{
                     background-color: rgba(0, 0, 0, 0.61);
+                    cursor: pointer;
+
                 }
             }
         }
@@ -166,11 +172,14 @@ body {
                         margin: 10px;
                         &:hover{
                           background-color: rgba(0, 0, 0, 0.61);
+                          cursor: pointer;
                         }
                         &:last-child{
                           background-color: rgba(255, 0, 0, 0.616);
                           &:hover{
                             background-color: red;
+                            cursor: pointer;
+
                           }
                         }
                     }

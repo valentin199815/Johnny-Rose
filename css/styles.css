@@ -157,17 +157,10 @@ body main > section.photos > div > div {
 
 body main > section.photos > div > div img {
   width: 100%;
-  opacity: 0;
-  -webkit-transform: scale(1, 0);
-          transform: scale(1, 0);
-  -webkit-transition: 0.7s all;
-  transition: 0.7s all;
-}
-
-body main > section.photos > div > div img.show_img {
-  opacity: 1;
   -webkit-transform: scale(1, 1);
           transform: scale(1, 1);
+  -webkit-transition: 0.7s all;
+  transition: 0.7s all;
 }
 
 body main > section.photos > div > div img:hover {

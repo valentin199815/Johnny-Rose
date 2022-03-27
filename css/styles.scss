@@ -115,13 +115,8 @@ body{
                         @include flex;
                         img{
                             width: 100%;
-                            opacity: 0;
-                            transform: scale(1,0);
+                            transform: scale(1,1);
                             transition: 0.7s all;
-                            &.show_img{
-                                opacity: 1;
-                                transform: scale(1,1);
-                            }
                             &:hover{
                                 transform: scale(1.1,1.1);
                             }
