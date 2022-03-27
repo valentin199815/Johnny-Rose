@@ -1,0 +1,237 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+$mycolor : rgb(202, 43, 43);
+@mixin flex($direct:row,$justify:center,$align:center){
+    display: flex;
+    flex-direction: $direct;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin grid(){
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+    @media (max-width:400px) {
+        grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    }
+    grid-gap: 15px;
+}
+
+body{
+    margin: 0;
+    font-family: "Montserrat";
+
+    header{
+        background-image: url("../img/1.jpeg");
+        //to adjast position
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 0; 
+        //-e to adjast position
+        h1{
+            margin: 0;
+            padding: 6% 0 2%;
+            font-size: 60px;
+            text-align: center;
+            span{
+                color: $mycolor;
+            }
+        }
+        nav{
+            top: 50px;
+            text-align: center;
+            a{
+                text-decoration: none;
+                font-size: 25px;
+                color: black;
+                padding: 1%;
+                &:hover{
+                    color: $mycolor;
+                }
+            }
+        }
+    }
+
+
+    main{
+        margin-top: 50px;
+        @include flex($direct:column);
+        &>section{
+            padding: 0 5%;
+            margin: 50px 0;
+            h2{
+                color: black;
+                text-align: center;
+                font-size: 40px;
+                margin: 20px;
+            }
+            &.bio{
+               display: grid;
+               grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+               
+                img{
+                    width: 100%;
+                }
+                &>div{
+                    p{
+                        margin: 5%;
+                    }
+                    &>div{
+                        text-align: center;
+                        button{
+                            background-color: $mycolor;
+                            padding: 16px 20px;
+                            border: 0; outline: 0;
+                            color: white;
+                            cursor: pointer;
+                            border-radius: 4px;
+                        }
+                    }
+                }        
+            }
+
+            &.photos{
+                &>div{
+                    @include flex;
+                    flex-wrap: wrap;
+                    &>div{
+                        border: 10px solid black;
+                        background-color: rgba(0, 0, 0, 0.507);
+                        overflow: hidden;
+                        min-width: 200px;
+                        width: 80%;
+                        @media (min-width:700px) and (max-width:1350px) {
+                            width: 40%;
+                        }
+                        @media (min-width:1350px) {
+                            width: 30%;
+                        }
+                        margin: 20px;
+                        @include flex;
+                        img{
+                            width: 100%;
+                            opacity: 0;
+                            transform: scale(1,0);
+                            transition: 0.7s all;
+                            &.show_img{
+                                opacity: 1;
+                                transform: scale(1,1);
+                            }
+                            &:hover{
+                                transform: scale(1.1,1.1);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.events{
+                &>div{
+                    @include grid;
+                    &>div{
+                        @include flex($direct:column);
+                        img{
+                            width: 100%;
+                            border-radius: 10px 10px 0px 0px;
+                        }
+                        &>div{
+                            width: 100%;
+                            background-color: black;
+                            border-radius: 0px 0px 10px 10px;
+                            display: grid;
+                            grid-template-columns: 30% 70%;
+                            text-align: center;
+                            padding: 3%;
+                            .date{
+                                font-size: 20px;
+                                font-weight: bold;
+                                border-right: 1px solid white;
+                                color: white;
+                                text-align: center;
+                                span{
+                                    font-size: 33px;
+                                }
+                            }
+                            &>div{
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                p:first-child{
+                                    color: white;
+                                    margin-bottom: 4%;
+                                    i{
+                                        padding-right: 20px;
+                                    }
+                                }
+                                p:nth-child(2){
+                                    font-size: 12px;
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.contact{
+                @include grid;
+                img{
+                    width: 100%;
+                }
+                form{
+                    input, textarea{
+                        width: 100%;
+                        max-height: 70px;
+                        min-width: 100%;
+                        max-width: 100%;
+                        padding: 7px;
+                        border-radius: 10px;
+                        margin-bottom: 3%;
+                    }
+                    label{
+                        color: $mycolor;
+                        font-size: 20px;
+                    }
+                    div{
+                        text-align: center;
+                        button{
+                            background-color: $mycolor;
+                            padding: 16px 20px;
+                            border: 0; outline: 0;
+                            color: white;
+                            cursor: pointer;
+                            border-radius: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    footer{
+        height: 30vh;
+        background-color: $mycolor;
+        text-align: center;
+        p:first-child{
+            font-size: 30px;
+            color: white;
+            padding: 2% 0;
+        }
+        p:nth-child(2){
+            color: white;
+            padding: 0 0 2%;
+        }
+        .icons{
+            i{
+                color: white;
+                font-size: 24px;
+                padding: 0 10px;
+            }
+        }
+    }
+}
