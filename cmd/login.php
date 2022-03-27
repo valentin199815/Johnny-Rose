@@ -14,7 +14,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-    <title>BINARY BEAST</title>
+    <title>CMD LOGIN</title>
 </head>
 
 <body>
@@ -74,10 +74,10 @@ session_start();
                     exit();
                 }
             } else {
-                echo "<h1>Wrong user e-mail / password</h1>";
+                echo "<h2 style='color:blue; margin-top:1rem'>Wrong user e-mail / password</h2>";
             }
         } else {
-            echo "<h1>Wrong user e-mail / password</h1>";
+            echo "<h2 style='color:blue; margin-top:1rem'>Wrong user e-mail / password</h2>";
         }
         $dbcon->close();
     }
